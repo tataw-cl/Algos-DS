@@ -24,4 +24,5 @@ int x;
     int Array[]={12,56,4,45,14,23,25,11};
     int size=sizeof(Array)/sizeof(Array[0]);//returns the size of the array, i.e, the number of elemetns present
     linear_search(Array,size,x);
+    return 0;
     }
