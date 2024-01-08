@@ -6,4 +6,4 @@ Blow me away with your code and let's crack these stuff together one line of cod
 
 Have just started adding some basic fun programs like the pattern program and the digit divider programs in C, along wigh some fundamental concept programs such as recursion.
 
-Supposed to have pushed code for linked list implementation tonight, but network constraints are limiting that...
+Will push codebfor linked list implementation 
