@@ -7,3 +7,5 @@ Blow me away with your code and let's crack these stuff together one line of cod
 Have just started adding some basic fun programs like the pattern program and the digit divider programs in C, along wigh some fundamental concept programs such as recursion.
 
 Will push codebfor linked list implementation 
+
+Also, integrating the use of LLMs like Monica, 'poe' and `GitHub copilot` in my programing process...
