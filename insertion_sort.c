@@ -1,18 +1,20 @@
-/*#include<stdio.h>
+#include<stdio.h>
 int n;
 void insertion_sort(int arr[], int n){
-for (int i = 1; i < n; i++)
-{
-    int temp=arr[i];// Element to be inserted
-    for (int j = i; j > 0 && temp<arr[j-1]; j--)
+    for (int i = 1; i < n; i++)
     {
-        arr[j]=arr[j-1]; //line of code to shift the elements progressively
-        arr[j]=temp;//where actual insertion takes place
-    }   
-}
+        int temp = arr[i]; // Element to be inserted
+        int j = i;
+        while (j > 0 && temp < arr[j-1])
+        {
+            arr[j] = arr[j-1]; // Shift the elements progressively
+            j--;
+        }
+        arr[j] = temp; // Actual insertion takes place after all necessary shifts
+    }
 }
 
-void printArr(int arr[]){
+void printArr(int arr[], int n){
     for (int i = 0; i < n; i++)
     {
         printf("%d ",arr[i]);
@@ -21,61 +23,22 @@ void printArr(int arr[]){
 }
 
 int main(){
-    printf("How many numbers are you planning on sorting\n");
-    scanf("%d", &n);
-    int Array[n];
-     printf("Enter %d elements into the array: \n", n);
-    for (int i=0;i< n;i++)
-    {
-        scanf("%d", &Array[i]);
-    }
-    insertion_sort(Array,n);
-    printf("Your sorted list is:\n");
-    printArr(Array);
+    printf("Testing insertion sort function\n");
 
-    return 0;
-}*/
+    // Define a test array
+    int testArray[] = {5, 2, 4, 6, 1, 3};
+    int n = sizeof(testArray) / sizeof(testArray[0]);
 
-#include <stdio.h>
+    // Print the array before sorting
+    printf("Before sorting: ");
+    printArr(testArray, n);
 
-void insertionSort(int arr[], int n) {
-    int i, key, j;
+    // Apply the insertion sort
+    insertion_sort(testArray, n);
 
-    // Traverse through the array
-    for (i = 1; i < n; i++) {
-        key = arr[i]; // Select the element to be inserted
-        j = i - 1;
-
-        /*
-        Move elements of arr[0..i-1], that are
-        greater than key, to one position ahead
-        of their current position
-        */
-        while (j >= 0 && arr[j] > key) {
-            arr[j + 1] = arr[j];
-            j = j - 1;
-        }
-
-        arr[j + 1] = key; // Insert the element in its correct position
-    }
-}
-
-int main() {
-    int arr[] = {5, 2, 8, 12, 1, 6};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    int i;
-
-    printf("Original array: ");
-    for (i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
-
-    insertionSort(arr, n);
-
-    printf("\nSorted array: ");
-    for (i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
+    // Print the array after sorting
+    printf("After sorting: ");
+    printArr(testArray, n);
 
     return 0;
 }
