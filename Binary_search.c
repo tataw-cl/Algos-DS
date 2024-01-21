@@ -33,7 +33,7 @@ int main(){
      printf("What value are you searchung for?: ");
     scanf("%d", &x);
     int Array[]={1,2,4,5,8,15,45,89,100,123,154,187,198,210};
-    int size=sizeof(Array)/sizeof(Array[0]);//returns the size of the array, i.e, the number of elemetns present
+    int size=sizeof(Array)/sizeof(Array[0]);//returns the size of the array, i.e, the number of elements present
     binary_search(Array,size,x);
     return 0;
 }
