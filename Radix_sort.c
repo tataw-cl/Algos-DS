@@ -1,90 +1,60 @@
 //program for the C implementation of radix sorting algorithm
-#include<stdio.h>
-int i;
-//int place=(array[i]/exp)%10;
-//function to get the max value in the array
-int max_val(int array[], int n){
-    int max_no=array[0];
-    for (i = 1; i < n; i++)
-    {
-    if(max_no<array[i]){
-        max_no=array[i];
-    }
-    }
-    return max_no;    
+#include <stdio.h>
+
+// A utility function to get maximum value in arr[]
+int getMax(int arr[], int n) {
+    int max = arr[0];
+    for (int i = 1; i < n; i++)
+        if (arr[i] > max)
+            max = arr[i];
+    return max;
 }
 
-//function to sort the numbers by their place values
-void F_sort(int array[],int n, int exp){
-    //array to store the sorted elements
-    int output[n];
-    //count array to store the count of digits
-    int count[10]={0};
-    for ( i = 0; i < n; i++)
-    {
-        count[(array[i]/exp)%10]++;
-        printf("This is the value of the count[(array[i]/exp)%10]++ role throughout: %d",  count[(array[i]/exp)%10]++ );
+// A function to do counting sort of arr[] according to the digit represented by exp.
+void countSort(int arr[], int n, int exp) {
+    int output[n]; // output array
+    int i, count[10] = {0};
+
+    // Store count of occurrences in count[]
+    for (i = 0; i < n; i++)
+        count[(arr[i]/exp)%10]++;
+
+    // Change count[i] so that count[i] now contains actual position of this digit in output[]
+    for (i = 1; i < 10; i++)
+        count[i] += count[i - 1];
+
+    // Build the output array
+    for (i = n - 1; i >= 0; i--) {
+        output[count[(arr[i]/exp)%10] - 1] = arr[i];
+        count[(arr[i]/exp)%10]--;
     }
 
-    //change count[i] so that count[i] contains the actual position of the digit in output[]
-    for ( i = 1; i < 10; i++)
-    {
-        count[i]+=count[i-1];
-    }
-
-    //build the output array
-    
-    for ( i = n-1; i >=0; i--)
-    {
-    output[count[(array[i]/exp)%10]-1]=array[i];
-    count[(array[i]/exp)%10]--;
-    }
-
-    //copy output array so that the array contains sorted numbers according to the current digit
-    for ( i = 0; i < n; i++)
-    {
-    array[i]=output[i];
-    }
-    
+    // Copy the output array to arr[], so that arr[] now contains sorted numbers according to current digit
+    for (i = 0; i < n; i++)
+        arr[i] = output[i];
 }
 
-//radix sort function to sort array using radix sort algorithm.
-void radix_sort(int array[], int n){
-    //getting max_no
-    int max=max_val(array,n);
+// The main function to that sorts arr[] using Radix Sort
+void radixsort(int arr[], int n) {
+    // Find the maximum number to know number of digits
+    int m = getMax(arr, n);
 
-    //performing the couting sort for every digit. Instead of passing digit number, exp is passed.
-    //exp is 10^i where i is the current digit number
-
-    for (int exp = 1; max/exp>0; exp*=10)
-    {
-        F_sort(array, n, exp);
-    }
-    
+    // Do counting sort for every digit. Note that instead of passing digit number, exp is passed. exp is 10^i where i is current digit number
+    for (int exp = 1; m/exp > 0; exp *= 10)
+        countSort(arr, n, exp);
 }
 
-//function for printing
-void printArray(int array[], int n){
-for ( i = 0; i < n; i++)
-{
-    printf("%d ", array[i]);
-}
-printf("\n");
-
+// A utility function to print an array
+void print(int arr[], int n) {
+    for (int i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
 }
 
-//main to test the code
-
-int main(){
-    int array[]={170,562,48,967,23,567,54,99,998,48,253,012};
-    int n=sizeof(array)/sizeof(array[0]);
-
-    printf("Original array: ");
-    printArray(array, n);
-
-        radix_sort(array, n);
-    printf("Sorted array: ");
-    printArray(array, n);
-
+int main() {
+    int arr[] = {170, 45, 75, 90, 802, 24, 2, 66};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    radixsort(arr, n);
+    print(arr, n);
     return 0;
 }
