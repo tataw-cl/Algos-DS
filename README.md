@@ -6,4 +6,4 @@ Blow me away with your code and let's crack these stuff together <h5 one line of
 
 Have just started adding some basic fun programs like the pattern program and the digit divider programs in C, along wigh some fundamental concept programs such like some recursive programs which are pretty interesting and should be looked upon if one is a beginner in C programing language and some of the concepts
 
-Also, integrating the use of LLMs like `Monica`, `poe` and `GitHub copilot` in my programing process. Did that with the linked list C code implementation..
+Also, integrating the use of LLMs like `Monica`, `poe` and `GitHub copilot` in my programing process. Did that with the linked list C code implementation.
