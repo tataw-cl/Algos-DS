@@ -5,7 +5,7 @@ int head=-1; //Where head is the position in which the last element was removed
 int tail=0; //Where the tail is the position where the next element is to be added
 int val=-1; //value for storage after dequeuing
 int Array[MAX]; //initializaton of the array queue
-int checker=0; //value to check if the array has gone cyclic so that we know how to print
+int checker=0; //value to check if the array has gone cyclic so that we know how to print the list in order
 
 //Creation of the function to check if it is empty
 int IsEmpty(){
